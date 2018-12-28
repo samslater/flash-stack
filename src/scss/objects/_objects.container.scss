@@ -1,0 +1,44 @@
+.o-container {
+    display: block;
+    &--center {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+    }
+    &--text-center {
+        text-align: center;
+    }
+}
+
+@mixin container($space-map, $breakpoint: null) {
+
+    @each $name, $value in $space-map {
+
+        $class: null;
+        @if $name != null {
+            $class: --#{$name}
+        }
+
+        .o-container#{$class}#{$breakpoint} {
+            margin: $value 0;
+        }
+
+    }
+
+}
+
+@include container($space-map);
+
+@if (variable-exists(mq-breakpoints-reversed)) {
+
+    @each $bp-name, $bp-value in $mq-breakpoints-reversed {
+
+        @include mq($until: $bp-name) {
+
+            @include container($space-map, \@#{$bp-name});
+
+        }
+
+    }
+
+}

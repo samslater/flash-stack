@@ -1,0 +1,49 @@
+// https://developer.mozilla.org/en-US/docs/Web/CSS/display#Syntax
+$display-types:
+  block
+  contents
+  flex
+  flow
+  flow-root
+  grid
+  inherit
+  initial
+  inline
+  inline-block
+  list-item
+  ruby
+  subgrid
+  table
+  none
+  unset
+!default;
+
+@mixin display ($display-types, $media: null) {
+    @each $property in $display-types {
+        .u-display-#{$property}#{$media} {
+            display: $property !important;
+        }
+    }
+}
+
+@include display($display-types);
+
+// Check for mq-breakpoints-reversed variable set in styleguide-core
+@if (variable-exists(mq-breakpoints-reversed)) {
+    @each $bp-name, $bp-value in $mq-breakpoints-reversed {
+        @include mq($until: $bp-name) {
+            @include display($display-types, \@#{$bp-name});
+        }
+    }
+}
+
+// Print display utilities
+// Note: must be created after breakpoints above, as print trumps breakpoint
+$print-display-types:
+    block
+    none
+!default;
+
+@media print {
+    @include display($print-display-types, \@print);
+}

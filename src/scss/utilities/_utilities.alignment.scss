@@ -1,0 +1,43 @@
+@mixin alignments($breakpoint: null) {
+
+    .u-text-left#{$breakpoint} {
+        text-align: left !important;
+    }
+
+    .u-text-center#{$breakpoint} {
+        text-align: center !important;
+    }
+
+    .u-text-right#{$breakpoint} {
+        text-align: right !important;
+    }
+
+    .u-float-right#{$breakpoint} {
+        float: right !important;
+    }
+
+    .u-float-left#{$breakpoint} {
+        float: left !important;
+    }
+
+    .u-float-none#{$breakpoint} {
+        float: none !important;
+    }
+
+}
+
+@include alignments();
+
+@if (variable-exists(mq-breakpoints-reversed)) {
+
+    @each $bp-name, $bp-value in $mq-breakpoints-reversed {
+
+        @include mq($until: $bp-name) {
+
+            @include alignments(\@#{$bp-name});
+
+        }
+
+    }
+
+}

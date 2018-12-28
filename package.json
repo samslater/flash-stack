@@ -1,0 +1,39 @@
+{
+  "name": "flash-stack",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "csvtojson": "^2.0.8",
+    "get-sheet-done": "^0.1.5",
+    "json2csv": "^4.3.2",
+    "lodash": "^4.17.11",
+    "myjson": "^1.0.0",
+    "node-sass": "^4.9.4",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "2.0.5"
+  },
+  "scripts": {
+    "start": "npm run sass && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "sass": "node-sass src/scss/app.scss src/App.css",
+    "tool": "node scripts/dataTool.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "uuid": "^3.3.2"
+  }
+}

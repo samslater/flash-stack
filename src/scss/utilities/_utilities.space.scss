@@ -1,0 +1,54 @@
+$spacing-directions: (
+        null,
+        '-top',
+        '-right',
+        '-bottom',
+        '-left'
+);
+
+$spacing-properties: (
+        'padding',
+        'margin'
+);
+
+@mixin spacing($spacing-properties, $spacing-directions, $space-map, $breakpoint: null) {
+
+  @each $property in $spacing-properties {
+
+    @each $direction in $spacing-directions {
+
+        @each $name, $value in $space-map {
+
+            $class: null;
+            @if $name != null {
+                $class : -#{$name}
+            }
+
+            .u-#{$property}#{$direction}#{$class}#{$breakpoint} {
+                #{$property}#{$direction}: $value !important;
+            }
+
+        }
+
+    }
+
+  }
+
+}
+
+
+@include spacing($spacing-properties, $spacing-directions, $space-map);
+
+@if (variable-exists(mq-breakpoints-reversed)) {
+
+  @each $bp-name, $bp-value in $mq-breakpoints-reversed {
+
+    @include mq($until: $bp-name) {
+
+      @include spacing($spacing-properties, $spacing-directions, $space-map, \@#{$bp-name});
+
+    }
+
+  }
+
+}

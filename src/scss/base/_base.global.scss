@@ -1,0 +1,26 @@
+html {
+    font-size: $base-font-size;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    color: $color-neutral-1;
+    font-family: Helvetica;
+    font-feature-settings: "tnum", "lnum"; // Brings numbers in line with letters
+    font-size: $font-size-1x;
+    line-height: $line-height-1x1o2;
+}
+
+h1 {
+    font-size: $font-size-3x;
+}
+h2 {
+    font-size: $font-size-2x;
+}
+h3 {
+    font-size: $font-size-1x1o2;
+}
+h4 {
+    font-size: $font-size-1x;
+}

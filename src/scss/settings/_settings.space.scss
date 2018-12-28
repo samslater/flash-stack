@@ -1,0 +1,28 @@
+$base-space: 1rem !default; // 16px;
+
+$space-map : (
+    null: $base-space,
+    '1o8': $base-space/8,
+    '1o4': $base-space/4,
+    '1o2': $base-space/2,
+    '3o4': $base-space * 0.75,
+    '1x': $base-space,
+    '1x1o2': $base-space * 1.5,
+    '2x': $base-space * 2,
+    '3x': $base-space * 3,
+    '4x': $base-space * 4,
+    '5x': $base-space * 5,
+    'none': 0
+) !default;
+
+$space-1o8: map_get($space-map, '1o8') !default;     // 2px
+$space-1o4: map_get($space-map, '1o4') !default;     // 4px
+$space-1o2: map_get($space-map, '1o2') !default;     // 8px
+$space-3o4: map_get($space-map, '3o4') !default;     // 12px
+$space: $base-space !default;                        // 16px
+$space-1x: $base-space !default;                     // 16px
+$space-1x1o2: map_get($space-map, '1x1o2') !default; // 24px
+$space-2x: map_get($space-map, '2x') !default;       // 32px
+$space-3x: map_get($space-map, '3x') !default;       // 48px
+$space-4x: map_get($space-map, '4x') !default;       // 64px
+$space-5x: map_get($space-map, '5x') !default;       // 80px

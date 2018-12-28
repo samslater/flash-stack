@@ -1,0 +1,24 @@
+.card {
+    border: 2px solid $color-neutral-3;
+    &__face {
+        padding: $space-3x;
+        cursor: pointer;
+        font-size: $font-size-2x;
+        text-align: center;
+    }
+    &__button-group {
+
+    }
+    &__button {
+        padding: $space-1x;
+        text-align: center;
+        width: 100%;
+        cursor: pointer;
+        &:disabled {
+            cursor: not-allowed;
+        }
+        &--small {
+            padding: $space-1o4;
+        }
+    }
+}

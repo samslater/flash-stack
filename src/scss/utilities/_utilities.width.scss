@@ -1,0 +1,35 @@
+$fractions: 1 2 3 4 5 6 10 12 !default;
+
+@mixin widths($columns, $breakpoint: null) {
+
+    @each $denominator in $columns {
+
+        @for $numerator from 1 through $denominator {
+
+            .u-width-#{$numerator}o#{$denominator}#{$breakpoint} {
+                width: ($numerator / $denominator) * 100% !important;
+            }
+
+        }
+
+    }
+
+    .u-width-auto#{$breakpoint} {
+        width: auto !important;
+    }
+
+}
+
+@include widths($fractions);
+
+@if (variable-exists(mq-breakpoints-reversed)) {
+
+    @each $bp-name, $bp-value in $mq-breakpoints-reversed {
+
+        @include mq($until: $bp-name) {
+            @include widths($fractions, \@#{$bp-name});
+        }
+
+    }
+
+}

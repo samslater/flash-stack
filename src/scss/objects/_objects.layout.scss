@@ -1,0 +1,106 @@
+.o-layout {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+
+    &--wrap {
+        flex-wrap: wrap;
+    }
+
+    &--left {
+        justify-content: flex-start;
+    }
+
+    &--center {
+        justify-content: center;
+    }
+
+    &--right {
+        justify-content: flex-end;
+    }
+
+    &--top {
+        align-items: flex-start;
+    }
+    &--middle {
+        align-items: center;
+    }
+    &--bottom {
+        align-items: flex-end;
+    }
+
+    &__item {
+        flex: 0 1 auto;
+
+        &--grow {
+            flex: 1 1 auto;
+        }
+        &--top {
+            align-self: flex-start;
+        }
+        &--middle {
+            align-self: center;
+        }
+        &--bottom {
+            align-self: flex-end;
+        }
+    }
+
+}
+
+//Gutters
+
+@mixin layout($space-map, $breakpoint: null) {
+
+    @each $name, $value in $space-map {
+
+        $class: null;
+        @if $name != null {
+            $class: -#{$name}
+        }
+
+        .o-layout--gutters#{$class}#{$breakpoint} {
+            margin-left: -$value;
+            > .o-layout__item {
+                padding-left: $value;
+            }
+        }
+    }
+
+}
+
+@include layout($space-map);
+
+@if (variable-exists(mq-breakpoints-reversed)) {
+
+    @each $bp-name, $bp-value in $mq-breakpoints-reversed {
+
+        @include mq($until: $bp-name) {
+
+            .o-layout--wrap\@#{$bp-name} {
+                wrap: wrap;
+            }
+
+            @include layout($space-map, \@#{$bp-name});
+
+        }
+
+    }
+
+}
+
+//Grow and Order
+
+@for $numerator from 1 through 12 {
+
+    .o-layout__item--grow-#{$numerator} {
+        flex: $numerator 1 auto;
+    }
+
+    .o-layout__item--order-#{$numerator} {
+        order: $numerator;
+    }
+
+}
